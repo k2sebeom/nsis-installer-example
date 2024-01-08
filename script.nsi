@@ -17,6 +17,7 @@ ShowInstDetails show
 !define MUI_WELCOMEPAGE_TEXT "Example Installer for NSIS"
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 
@@ -27,13 +28,13 @@ ShowInstDetails show
 
 !insertmacro MUI_LANGUAGE "English"
 
-Section "MainSection" SEC01
+Section "Program" SEC01
     SetOutPath $INSTDIR
     File "dist\*"
     Call InstallAdditionalComponents
 SectionEnd
 
-Section "-post"
+Section "-Program Uninstaller"
     DetailPrint "Register Uninstall Info"
     WriteUninstaller "$INSTDIR\Uninstall.exe"
 
@@ -41,6 +42,14 @@ Section "-post"
     WriteRegStr HKLM "${REG_HKLM_UNINST}\${PRODUCT_NAME}" "InstallLocation" "$INSTDIR"
     WriteRegStr HKLM "${REG_HKLM_UNINST}\${PRODUCT_NAME}" "UninstallString" "$INSTDIR\Uninstall.exe"
     MessageBox MB_OK "Install Complete"
+SectionEnd
+
+Section /o "Optional Items"
+
+SectionEnd
+
+Section "!Important Items"
+
 SectionEnd
 
 Section Uninstall
