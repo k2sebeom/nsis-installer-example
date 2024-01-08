@@ -12,9 +12,6 @@ Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ShowInstDetails show
 
-
-; Unicode True
-
 ; Define pages
 !define MUI_WELCOMEPAGE_TITLE "Install NSIS Example"
 !define MUI_WELCOMEPAGE_TEXT "Example Installer for NSIS"
